@@ -51,6 +51,8 @@ Rails.application.routes.draw do
       end
 
       resources :transactions, only: [:index, :show] do
+        resources :invoices, only: [:index], module: "transactions", as: :invoices
+        
         collection do
           get 'find'
           get 'find_all'
