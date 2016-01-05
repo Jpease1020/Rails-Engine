@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       resources :customers, only: [:index, :show] do
+        resources :invoices, only: [:index], module: "customers", as: :invoices
+        resources :transactions, only: [:index], module: "customers", as: :transactions
+
         collection do
           get 'find'
           get 'find_all'

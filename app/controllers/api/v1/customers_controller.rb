@@ -10,6 +10,7 @@ class Api::V1::CustomersController < ApplicationController
   end
 
   def find
+    byebug
     respond_with Customer.find_by(customer_params)
   end
 
