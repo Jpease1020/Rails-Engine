@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       end
 
       resources :invoice_items, only: [:index, :show] do
+        resources :invoice, only: [:index], module: "invoice_items"
+        resources :item, only: [:index], module: "invoice_items"
         collection do
           get 'find'
           get 'find_all'
