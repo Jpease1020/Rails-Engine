@@ -23,12 +23,21 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.find(rand(rand_num))
   end
 
-  def most_revenue
-    render text: "ji"
+  def revenue
+    if params[:date]
+      respond_with Merchant.revenue_by_date(params[:date], params[:id])
+    else
+      respond_with Merchant.revenue(params[:id])
+    end
+
   end
 
-  def revenue
-    respond_with Merchant.joins(invoices: [:transactions, :invoice_items]).where("transactions.result = ? AND transactions.created_at = ?", "success", params[:date]).sum("invoice_items.quantity * invoice_items.unit_price")
+  def most_revenue
+    render text: "merchants who sold the most"
+  end
+
+  def all_merchants_revenue_by_date
+    respond_with Merchant.all_merchants_revenue_by_date(params[:date])
   end
 
   private

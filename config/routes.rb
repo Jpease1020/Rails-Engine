@@ -54,14 +54,21 @@ Rails.application.routes.draw do
         resources :items, only: [:index], module: "merchants"
         resources :invoices, only: [:index], module: "merchants"
 
+        member do
+         get :revenue
+         get :favorite_customer
+         get :customers_with_pending_invoices
+       end
 
         collection do
           get 'find'
           get 'find_all'
           get 'random'
-          get 'revenue'
           get 'most_revenue'
+          get 'most_items'
+          get 'revenue', to: "merchants#all_merchants_revenue_by_date"
         end
+
 
       end
 
