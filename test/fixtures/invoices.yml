@@ -3,9 +3,29 @@
 one:
   customer_id: 1
   merchant_id: 1
-  status: MyString
+  status: success
 
 two:
-  customer_id: 1
+  customer_id: 2
   merchant_id: 1
-  status: MyString
+  status: success
+
+three:
+  customer_id: 1
+  merchant_id: 2
+  status: success
+
+four:
+  customer_id: 4
+  merchant_id: 3
+  status: success
+
+five:
+  customer_id: 3
+  merchant_id: 4
+  status: success
+
+six:
+  customer_id: 5
+  merchant_id: 5
+  status: failed

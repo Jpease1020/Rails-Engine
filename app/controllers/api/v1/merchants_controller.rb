@@ -28,7 +28,7 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def revenue
-    respond_with Merchant.joins(invoices: [:transactions, :invoice_items]).where("transactions.result = ? AND transactions.created_at = ?", "success", params[:date]).sum("invoice_items.quantity * invoice_items.unit_price")
+    respond_with Merchant.joins(invoices: [:transactions, :invoice_items]).where("transactions.result = ?, "success").sum("invoice_items.quantity * invoice_items.unit_price")
   end
 
   def customers_with_pending_invoices

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::ItemsControllerTest < ActionController::TestCase
+class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
 
   test "#index responds to json" do
     get :index, format: :json
@@ -13,46 +13,48 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_kind_of Array, json_response
   end
 
-  test "#index returns the correct number of items" do
+  test "#index returns the correct number of invoice_items" do
     get :index, format: :json
-    assert_equal Item.count, json_response.count
+    assert_equal InvoiceItem.count, json_response.count
   end
 
-  test "#index conatins items that have the correct properties" do
+  test "#index conatins invoice_items that have the correct properties" do
     get :index, format: :json
 
-    json_response.each do |item|
-      assert item["name"]
-      assert item["description"]
+    json_response.each do |invoice_item|
+      assert invoice_item["item_id"]
+      assert invoice_item["invoice_id"]
+      assert invoice_item["quantity"]
+      assert invoice_item["unit_price"]
     end
   end
 
   test "show responds to JSON" do
-    get :show, format: :json, id: Item.first.id
+    get :show, format: :json, id: InvoiceItem.first.id
 
     assert_response :success
   end
 
   test "#show returns one record" do
-    get :show, format: :json, id: Item.first.id
+    get :show, format: :json, id: InvoiceItem.first.id
 
     assert_kind_of Hash, json_response
   end
 
   test "#show returns the correct item" do
-    get :show, format: :json, id: Item.first.id
+    get :show, format: :json, id: InvoiceItem.first.id
 
-    assert_equal Item.first.id, json_response["id"]
+    assert_equal InvoiceItem.first.id, json_response["id"]
   end
 
   test "find responds to JSON" do
-    get :find, format: :json, id: Item.first.id
+    get :find, format: :json, id: InvoiceItem.first.id
 
     assert_response :success
   end
 
   test "#find returns one record" do
-    get :find, format: :json, id: Item.first.id
+    get :find, format: :json, id: InvoiceItem.first.id
 
     assert_kind_of Hash, json_response
   end
@@ -68,17 +70,19 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_kind_of Array, json_response
   end
 
-  test "#find_all returns the correct number of items" do
+  test "#find_all returns the correct number of invoice_items" do
     get :find_all, format: :json
-    assert_equal Item.count, json_response.count
+    assert_equal InvoiceItem.count, json_response.count
   end
 
-  test "#find_all conatins items that have the correct properties" do
+  test "#find_all conatins invoice_items that have the correct properties" do
     get :find_all, format: :json
 
-    json_response.each do |item|
-      assert item["name"]
-      assert item["description"]
+    json_response.each do |invoice_item|
+      assert invoice_item["item_id"]
+      assert invoice_item["invoice_id"]
+      assert invoice_item["quantity"]
+      assert invoice_item["unit_price"]
     end
   end
 
@@ -90,8 +94,8 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
   test "#random returns one record" do
     get :random, format: :json
-    item = json_response
+    invoice_item = json_response
 
-    assert item["description"].start_with?("Description")
+    assert Integer, invoice_item["item_id"].class
   end
 end

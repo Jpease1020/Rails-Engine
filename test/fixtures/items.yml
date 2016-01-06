@@ -1,31 +1,36 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: ItemOne
-  description: ItemOneDescription
+  description: Description One
   unit_price: 9.99
   merchant_id: 1
 
 two:
+  id: 2
   name: ItemTwo
-  description: ItemTwoDescription
+  description: Description Two
   unit_price: 9.12
   merchant_id: 1
 
 three:
+  id: 3
   name: ItemThree
-  description: ItemThreeDescription
+  description: Description Three
   unit_price: 11.12
   merchant_id: 2
 
 four:
+  id: 4
   name: ItemFour
-  description: ItemFourDescription
+  description: Description Four
   unit_price: 234.12
   merchant_id: 3
 
 five:
+  id: 5
   name: ItemFive
-  description: ItemFiveDescription
+  description: Description Five
   unit_price: 56.90
   merchant_id: 4
