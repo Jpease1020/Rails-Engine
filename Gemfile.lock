@@ -51,6 +51,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
     debug_inspector (0.0.2)
+    docile (1.1.5)
     erubis (2.7.0)
     execjs (2.6.0)
     globalid (0.3.6)
@@ -72,6 +73,10 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    mrspec (0.2.2)
+      minitest (~> 5.0)
+      rspec-core (~> 3.0)
+      what_weve_got_here_is_an_error_to_communicate (~> 0.0.6)
     multi_json (1.11.2)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
@@ -114,6 +119,10 @@ GEM
       json (~> 1.4)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rouge (1.10.1)
+    rspec-core (3.4.1)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
     sass (3.4.20)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -124,6 +133,11 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simplecov (0.11.1)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     spring (1.6.1)
     sprockets (3.5.2)
@@ -148,6 +162,8 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    what_weve_got_here_is_an_error_to_communicate (0.0.6)
+      rouge (~> 1.8, != 1.9.1)
 
 PLATFORMS
   ruby
@@ -157,12 +173,14 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  mrspec
   pg
   pry-rails
   rails (= 4.2.4)
   responders
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simplecov
   spring
   turbolinks
   uglifier (>= 1.3.0)
