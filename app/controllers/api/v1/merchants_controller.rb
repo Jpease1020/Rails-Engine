@@ -25,11 +25,10 @@ class Api::V1::MerchantsController < ApplicationController
 
   def revenue
     if params[:date]
-      respond_with Merchant.revenue_by_date(params[:date], params[:id])
+      respond_with Merchant.revenue_by_date(params[:id], params[:date])
     else
       respond_with Merchant.revenue(params[:id])
     end
-
   end
 
   def most_revenue
