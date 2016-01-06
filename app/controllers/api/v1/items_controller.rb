@@ -22,6 +22,14 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.find(rand(rand_num))
   end
 
+  def most_revenue
+    respond_with Item.top_items_by_revenue(params[:quantity])
+  end
+
+  def most_items
+    respond_with Item.top_items_by_number_sold(params[:quantity])
+  end
+
   private
 
   def item_params
