@@ -54,10 +54,13 @@ Rails.application.routes.draw do
         resources :items, only: [:index], module: "merchants"
         resources :invoices, only: [:index], module: "merchants"
 
+
         collection do
           get 'find'
           get 'find_all'
           get 'random'
+          get 'revenue'
+          get 'most_revenue'
         end
 
       end
