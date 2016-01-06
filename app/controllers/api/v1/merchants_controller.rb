@@ -32,16 +32,20 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def most_revenue
-    render text: "merchants who sold the most"
+    respond_with Merchant.top_items_by_revenue(params[:quantity])
+  end
+
+  def most_items
+    respond_with Merchant.top_items_by_number_sold(params[:quantity])
   end
 
   def all_merchants_revenue_by_date
     respond_with Merchant.all_merchants_revenue_by_date(params[:date])
   end
 
-  def customers_with_pending_invoices
-    respond_with Customer.joins()
-  end
+  # def customers_with_pending_invoices
+  #   respond_with Customer.joins()
+  # end
 
   private
 
