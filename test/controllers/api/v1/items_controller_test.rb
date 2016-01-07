@@ -103,7 +103,7 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     get :most_revenue, quantity: 5, format: :json
 
     assert_response :success
-# byebug
+
     assert_equal 5, json_response.count
 
     top_item_revenue = json_response.first["item_revenue"]
@@ -113,13 +113,5 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     assert_operator top_item_revenue, :>, second_to_top_item_revenue
   end
-  # def most_items
-  #   respond_with Item.top_items_by_number_sold(params[:quantity])
-  # end
-  #
-  # def best_day
-  #   respond_with({"best_day" => Item.best_day(params[:id])})
-  # end
-
 
 end

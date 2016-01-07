@@ -93,23 +93,41 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert String, merchant["name"].class
   end
 
-  test "test #revenue for all merchants returns the total revenue for date x across all merchants" do
-    skip
-    date = "2012-03-16 11:55:05"
-
-    get :all_merchants_revenue_by_date, date: date, format: :json
-
-    total_revenue = json_response
-  end
-
   test "test #favorite_customer returns the customer who has conducted the most successful transactions for a merchant" do
 
     get :favorite_customer, id: 1, format: :json
 
     assert_response :success
     response = json_response
-    # JSON.parse(response.body, symbolize_names: true)
 
+    assert_equal 'Jeff', response["first_name"]
+  end
+
+  test "#revenue returns the total revenue for that merchant across all transactions" do
+    get :revenue, id: 1, format: :json
+    assert_response :success
+
+    assert_equal "69.95", json_response["revenue"]
+  end
+
+  test "#most_revenue?quantity=x returns the top x merchants ranked by total revenue" do
+    get :most_revenue, quantity: 2, format: :json
+
+    assert_response :success
+    top_merchant = json_response.first
+    assert_equal 2, json_response.count
+
+    assert_equal "Bobs Shoes", json_response.first["name"]
+  end
+
+  test "#most_items?quantity=x returns the top x merchants ranked by total items sold" do
+    get :most_revenue, quantity: 2, format: :json
+
+    assert_response :success
+    top_merchant = json_response.first
+    assert_equal 2, json_response.count
+
+    assert_equal "Bobs Shoes", json_response.first["name"]
   end
 
 end
