@@ -19,4 +19,13 @@ class Item < ActiveRecord::Base
         .order("item_sold DESC")
         .take(quantity)
   end
+
+  def self.best_day(item_id)
+    InvoiceItem.joins(invoice: :transactions)
+               .where("item_id = ? AND transactions.result = ?", item_id, "success")
+               .group("invoices.created_at")
+               .order("sum_quantity DESC")
+               .sum("quantity")
+               .first[0]
+  end
 end
