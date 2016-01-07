@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   has_many :invoice_items
 
   def self.top_items_by_revenue(quantity)
-    Item.select("items.*, count(invoice_items.unit_price * invoice_items.quantity) AS item_revenue")
+    select("items.*, count(invoice_items.unit_price * invoice_items.quantity) AS item_revenue")
         .joins(invoice_items: [invoice: :transactions])
         .group("items.id")
         .where("transactions.result = ?", "success")
@@ -12,7 +12,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.top_items_by_number_sold(quantity)
-    Item.select("items.*, count(invoice_items.quantity) AS item_sold")
+    select("items.*, count(invoice_items.quantity) AS item_sold")
         .joins(invoice_items: [invoice: :transactions])
         .where("transactions.result = ?", "success")
         .group("items.id")

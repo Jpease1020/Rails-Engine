@@ -11,9 +11,9 @@ class Customer < ActiveRecord::Base
   end
 
   def self.customers_with_pending_invoices(id)
-    Customer.joins(invoices: [:transactions, :merchant]).
-             where("transactions.result = ? AND merchants.id = ?", "failed", id).
-             distinct
+    joins(invoices: [:transactions, :merchant])
+            .where("transactions.result = ? AND merchants.id = ?", "failed", id)
+            .distinct
   end
 
 end

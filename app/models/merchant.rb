@@ -22,7 +22,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def self.top_merchants_by_revenue(quantity)
-    Merchant.select("merchants.*, sum(invoice_items.unit_price * invoice_items.quantity) AS item_revenue")
+    select("merchants.*, sum(invoice_items.unit_price * invoice_items.quantity) AS item_revenue")
             .joins(invoices: [:invoice_items, :transactions])
             .where("transactions.result = ?", "success")
             .group("merchants.id")
@@ -31,7 +31,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def self.top_merchants_by_number_sold(quantity)
-    Merchant.select("merchants.*, sum(invoice_items.quantity) AS item_sold")
+    select("merchants.*, sum(invoice_items.quantity) AS item_sold")
             .joins(invoices: [:invoice_items, :transactions])
             .where("transactions.result = ?", "success")
             .group("merchants.id")
