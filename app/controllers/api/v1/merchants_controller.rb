@@ -32,20 +32,24 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def most_revenue
-    respond_with Merchant.top_items_by_revenue(params[:quantity])
+    respond_with Merchant.top_merchants_by_revenue(params[:quantity])
   end
 
   def most_items
-    respond_with Merchant.top_items_by_number_sold(params[:quantity])
+    respond_with Merchant.top_merchants_by_number_sold(params[:quantity])
   end
 
   def all_merchants_revenue_by_date
     respond_with Merchant.all_merchants_revenue_by_date(params[:date])
   end
 
-  # def customers_with_pending_invoices
-  #   respond_with Customer.joins()
-  # end
+  def customers_with_pending_invoices
+    respond_with Customer.customers_with_pending_invoices
+  end
+
+  def favorite_customer
+    respond_with Merchant.find_by(id: params[:id]).favorite_customer
+  end
 
   private
 

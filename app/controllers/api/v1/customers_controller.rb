@@ -22,6 +22,10 @@ class Api::V1::CustomersController < ApplicationController
     respond_with Customer.find(rand(rand_num))
   end
 
+  def favorite_merchant
+    respond_with Customer.find_by(id: params[:id]).favorite_merchant
+  end
+
   private
 
   def customer_params

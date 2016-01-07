@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
         # get 'favorite_customer', to: "customers"
 
+        member do
+          get 'favorite_merchant'
+        end
+
         collection do
           get 'find'
           get 'find_all'
