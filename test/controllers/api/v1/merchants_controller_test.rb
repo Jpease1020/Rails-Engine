@@ -99,16 +99,14 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
 
     get :all_merchants_revenue_by_date, date: date, format: :json
 
-    byebug
     total_revenue = json_response
   end
 
   test "test #favorite_customer returns the customer who has conducted the most successful transactions for a merchant" do
-    skip
-    get :favorite_customer, merchant_id: 3, format: :json
+
+    get :favorite_customer, id: 1, format: :json
 
     assert_response :success
-    byebug
     response = json_response
     # JSON.parse(response.body, symbolize_names: true)
 
