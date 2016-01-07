@@ -92,4 +92,33 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
 
     assert String, merchant["name"].class
   end
+
 end
+
+# def revenue
+#   if params[:date]
+#     respond_with Merchant.revenue_by_date(params[:id], params[:date])
+#   else
+#     respond_with Merchant.revenue(params[:id])
+#   end
+# end
+#
+# def most_revenue
+#   respond_with Merchant.top_merchants_by_revenue(params[:quantity])
+# end
+#
+# def most_items
+#   respond_with Merchant.top_merchants_by_number_sold(params[:quantity])
+# end
+#
+# def all_merchants_revenue_by_date
+#   respond_with Merchant.all_merchants_revenue_by_date(params[:date])
+# end
+#
+# def customers_with_pending_invoices
+#   respond_with Customer.customers_with_pending_invoices(params[:id])
+# end
+#
+# def favorite_customer
+#   respond_with Merchant.find_by(id: params[:id]).favorite_customer
+# end
