@@ -93,32 +93,23 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert String, merchant["name"].class
   end
 
-end
+  test "test #revenue for all merchants returns the total revenue for date x across all merchants" do
+    skip
+    date = "2012-03-16 11:55:05"
 
-# def revenue
-#   if params[:date]
-#     respond_with Merchant.revenue_by_date(params[:id], params[:date])
-#   else
-#     respond_with Merchant.revenue(params[:id])
-#   end
-# end
-#
-# def most_revenue
-#   respond_with Merchant.top_merchants_by_revenue(params[:quantity])
-# end
-#
-# def most_items
-#   respond_with Merchant.top_merchants_by_number_sold(params[:quantity])
-# end
-#
-# def all_merchants_revenue_by_date
-#   respond_with Merchant.all_merchants_revenue_by_date(params[:date])
-# end
-#
-# def customers_with_pending_invoices
-#   respond_with Customer.customers_with_pending_invoices(params[:id])
-# end
-#
-# def favorite_customer
-#   respond_with Merchant.find_by(id: params[:id]).favorite_customer
-# end
+    get :all_merchants_revenue_by_date, date: date, format: :json
+
+    total_revenue = json_response
+  end
+
+  test "test #favorite_customer returns the customer who has conducted the most successful transactions for a merchant" do
+
+    get :favorite_customer, id: 1, format: :json
+
+    assert_response :success
+    response = json_response
+    # JSON.parse(response.body, symbolize_names: true)
+
+  end
+
+end

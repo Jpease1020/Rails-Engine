@@ -30,6 +30,10 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.top_items_by_number_sold(params[:quantity])
   end
 
+  def best_day
+    respond_with({"best_day" => Item.best_day(params[:id])})
+  end
+
   private
 
   def item_params

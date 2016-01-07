@@ -49,6 +49,10 @@ Rails.application.routes.draw do
         resources :merchant, only: [:index], module: "items"
         resources :invoice_items, only: [:index], module: "items"
 
+        member do
+          get 'best_day'
+        end
+
         collection do
           get 'most_revenue'
           get 'most_items'
