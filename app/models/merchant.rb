@@ -22,7 +22,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def self.top_merchants_by_revenue(quantity)
-    Merchant.select("merchants.*, count(invoice_items.unit_price * invoice_items.quantity) AS item_revenue")
+    Merchant.select("merchants.*, sum(invoice_items.unit_price * invoice_items.quantity) AS item_revenue")
             .joins(invoices: [:invoice_items, :transactions])
             .where("transactions.result = ?", "success")
             .group("merchants.id")
@@ -31,14 +31,12 @@ class Merchant < ActiveRecord::Base
   end
 
   def self.top_merchants_by_number_sold(quantity)
-    # byebug
-    ######## do i need to scope down to successfull transactions????????
-    Merchant.select("merchants.*, count(invoice_items.quantity) AS item_sold").joins(invoices: :invoice_items)
-            .where("transactions.result = ? AND invoice_items.item_id = ?", "success", "")
+    Merchant.select("merchants.*, sum(invoice_items.quantity) AS item_sold")
+            .joins(invoices: [:invoice_items, :transactions])
+            .where("transactions.result = ?", "success")
             .group("merchants.id")
             .order("item_sold DESC")
             .take(quantity)
-        # Item.select("items.*, count(invoice_items.quantity) AS item_sold").joins(invoice_items: [invoice: :transactions]).where("transactions.result = ?", "success").group("items.id").order("item_sold DESC").take(quantity)
   end
 
   def favorite_customer
