@@ -10,9 +10,9 @@ class Api::V1::Merchants::ItemsControllerTest < ActionController::TestCase
 
     items = JSON.parse(response.body)
 
-    byebug
-    items.first(5).each do |item|
+    items.each do |item|
       assert_equal item["merchant_id"], merchant.id
     end
   end
+
 end
