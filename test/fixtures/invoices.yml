@@ -1,11 +1,43 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   customer_id: 1
   merchant_id: 1
-  status: MyString
+  status: success
 
 two:
-  customer_id: 1
+  id: 2
+  customer_id: 2
   merchant_id: 1
-  status: MyString
+  status: success
+
+three:
+  id: 3
+  customer_id: 1
+  merchant_id: 2
+  status: success
+
+four:
+  id: 4
+  customer_id: 4
+  merchant_id: 3
+  status: success
+
+five:
+  id: 5
+  customer_id: 3
+  merchant_id: 4
+  status: success
+
+six:
+  id: 6
+  customer_id: 5
+  merchant_id: 5
+  status: failed
+
+seven:
+  id: 0
+  customer_id: 5
+  merchant_id: 5
+  status: failed

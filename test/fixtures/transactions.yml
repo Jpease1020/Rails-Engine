@@ -1,11 +1,61 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   invoice_id: 1
   credit_card_number: MyString
-  result: MyString
+  result: success
 
 two:
-  invoice_id: 1
+  id: 2
+  invoice_id: 2
   credit_card_number: MyString
-  result: MyString
+  result: success
+
+three:
+  id: 3
+  invoice_id: 3
+  credit_card_number: MyString
+  result: success
+
+four:
+  id: 4
+  invoice_id: 4
+  credit_card_number: MyString
+  result: failed
+
+five:
+  id: 5
+  invoice_id: 5
+  credit_card_number: MyString
+  result: failed
+
+six:
+  id: 6
+  invoice_id: 6
+  credit_card_number: MyString
+  result: success
+
+seven:
+  id: 7
+  invoice_id: 7
+  credit_card_number: MyString
+  result: success
+
+eight:
+  id: 8
+  invoice_id: 8
+  credit_card_number: MyString
+  result: success
+
+nine:
+  id: 9
+  invoice_id: 9
+  credit_card_number: MyString
+  result: success
+
+ten:
+  id: 0
+  invoice_id: 10
+  credit_card_number: MyString
+  result: failed

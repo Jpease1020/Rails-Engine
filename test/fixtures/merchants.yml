@@ -1,7 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  id: 1
+  name: Bobs Shoes
 
 two:
-  name: MyString
+  id: 2
+  name: JPC Carpentry
+
+three:
+  id: 3
+  name: Paramount Paintworks
+
+four:
+  id: 0
+  name: Store
